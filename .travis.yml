@@ -1,12 +1,12 @@
 nguage: objective-c
- 
 before_install:
-  - gem install cocoapods
-  - pod install
- 
+- gem install cocoapods
+- pod install
 script:
-  - xctool -workspace MyPlayground.xcworkspace -scheme MyPlayground -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO
-  - xcodebuild -workspace MyPlayground.xcworkspace -scheme MyPlayground -destination 'platform=iOS Simulator,name=iPhone 6' test
- 
+- xctool -workspace MyPlayground.xcworkspace -scheme MyPlayground -sdk iphonesimulator
+  ONLY_ACTIVE_ARCH=NO
+- xcodebuild -workspace MyPlayground.xcworkspace -scheme MyPlayground -destination
+  'platform=iOS Simulator,name=iPhone 6' test
 notifications:
-  slack: crowdworks:bq74wVT9Pd7iEo4jboB3YACq
+  slack:
+    secure: c9QnrSi0YY3csyBoVLalBIIfpzLk3WSy/5V9uqgiNuce5844Nzt6dt9GHky4UWP2hGDTwUqPxKKx5B/n4n/lEetx+xQ5zchRFR6EuAABYS5oBXL1Q1aJrJy0i2dw4rpsy79kp3shmIZkBOLGCOh1e4w1cbzJMd1NZDbodKQVGnM=
