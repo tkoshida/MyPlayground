@@ -1,0 +1,10 @@
+nguage: objective-c
+ 
+before_install:
+  - gem install cocoapods
+  - pod install
+ 
+script:
+  - xctool -workspace MyPlayground.xcworkspace -scheme MyPlayground -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO
+  - xcodebuild -workspace MyPlayground.xcworkspace -scheme MyPlayground -destination 'platform=iOS Simulator,name=iPhone 6' test
+ 
