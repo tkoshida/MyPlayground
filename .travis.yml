@@ -1,12 +1,31 @@
-nguage: objective-c
-before_install:
-- gem install cocoapods
-- pod install
+language: objective-c
+branches:
+  only:
+    - master
+    - develop
+cache:
+  directories:
+    - vendor/bundle
+    - Pods
+install:
+  - bundle install --path=vendor/bundle --binstubs=vendor/bin
+  - bundle exec pod install
+before_script:
+  - brew update && brew upgrade xctool
 script:
-- xctool -workspace MyPlayground.xcworkspace -scheme MyPlayground -sdk iphonesimulator
-  ONLY_ACTIVE_ARCH=NO
-- xcodebuild -workspace MyPlayground.xcworkspace -scheme MyPlayground -destination
-  'platform=iOS Simulator,name=iPhone 6' test
+  - '[ ! -z $(echo ${TRAVIS_BRANCH} | grep "^release.*$") ] && CONFIG=release || CONFIG=adhoc'
+  - echo ${TRAVIS_BRANCH}
+  - echo ${CONFIG}
+  - bundle exec rake $(echo ${ACTION} | sed -e "s/CONFIG/${CONFIG}/g")
+env:
+  global:
+    - LANG=en_US.UTF-8
+    - LC_ALL=en_US.UTF-8
+    #- secure: "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
+  matrix:
+    #- ACTION="profile:install certificate:add distribute:CONFIG certificate:remove"
+    - ACTION="distribute:CONFIG"
+    - ACTION=test
 notifications:
   slack:
     secure: c9QnrSi0YY3csyBoVLalBIIfpzLk3WSy/5V9uqgiNuce5844Nzt6dt9GHky4UWP2hGDTwUqPxKKx5B/n4n/lEetx+xQ5zchRFR6EuAABYS5oBXL1Q1aJrJy0i2dw4rpsy79kp3shmIZkBOLGCOh1e4w1cbzJMd1NZDbodKQVGnM=
