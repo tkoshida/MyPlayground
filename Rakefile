@@ -285,8 +285,7 @@ def deploygate
     token: token,
     message: release_notes
   }
-  #upload_form("https://deploygate.com/api/users/#{ENV['DEPLOYGATE_USER']}/apps")
-  sh %Q(curl -F "file=#{options['file']}" -F "token=#{options['token']}" -F "message=#{options['message']}" https://deploygate.com/api/users/#{ENV['DEPLOYGATE_USER']}/apps)
+  upload_form("https://deploygate.com/api/users/#{ENV['DEPLOYGATE_USER']}/apps", options)
 end
 
 def upload_form(url, options = {})
