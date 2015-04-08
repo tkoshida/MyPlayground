@@ -23,8 +23,7 @@ env:
     - LC_ALL=en_US.UTF-8
     #- secure: "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
   matrix:
-    #- ACTION="profile:install certificate:add distribute:CONFIG certificate:remove"
-    - ACTION="distribute:CONFIG"
+    - ACTION="profile:install certificate:add distribute:CONFIG certificate:remove"
     - ACTION=test
 notifications:
   slack:

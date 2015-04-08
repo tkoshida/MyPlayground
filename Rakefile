@@ -13,12 +13,12 @@ SCHEME = "MyPlayground"
 INFO_PLIST = File.expand_path("#{APP_NAME}/Info.plist")
 
 # Code signing
-CODE_SIGN_IDENTITY_APPSTORE = "iPhone Distribution: XXXXX Inc. (XXXXXXXXXX)";
-CODE_SIGN_IDENTITY_INHOUSE = "iPhone Distribution: XXXXX K.K.";
+CODE_SIGN_IDENTITY_APPSTORE = "iPhone Distribution: TAKAYOSHI KOSHIDA (C59MXB37VX)";
+CODE_SIGN_IDENTITY_INHOUSE = "iPhone Distribution: TAKAYOSHI KOSHIDA (C59MXB37VX)";
 PROFILE_APPSTORE = "??.mobileprovision"
-PROFILE_ADHOC = "??.mobileprovision"
+PROFILE_ADHOC = "test1.mobileprovision"
 PROFILE_INHOUSE = "??.mobileprovision"
-PROFILE_NAME_ADHOC = "?? Ad Hoc"
+PROFILE_NAME_ADHOC = "test1"
 PROFILE_NAME_INHOUSE = "?? Beta"
 PROFILE_DIR = "$HOME/Library/MobileDevice/Provisioning Profiles"
 KEYCHAIN_NAME = "ios-build.keychain"
@@ -155,7 +155,8 @@ def export_options(configuration: "Release")
     exportFormat: "IPA",
     archivePath: ARCHIVE_FILE,
     exportPath: IPA_FILE,
-    exportProvisioningProfile: configuration == "Release" ? PROFILE_NAME_ADHOC : PROFILE_NAME_INHOUSE,
+    #exportProvisioningProfile: configuration == "Release" ? PROFILE_NAME_ADHOC : PROFILE_NAME_INHOUSE,
+    exportProvisioningProfile: PROFILE_NAME_ADHOC,
   }
   join_options(options: options, prefix: "-", separator: " ")
 end
@@ -276,7 +277,7 @@ end
 
 def profile_install
   sh %[mkdir -p "#{PROFILE_DIR}"]
-  sh %[cp "#{PROFILE_INHOUSE}" "#{PROFILE_DIR}"]
+  #sh %[cp "#{PROFILE_INHOUSE}" "#{PROFILE_DIR}"]
   sh %[cp "#{PROFILE_ADHOC}" "#{PROFILE_DIR}"]
 end
 
@@ -291,14 +292,16 @@ namespace :certificate do
 end
 
 def add_certificates
-  passphrase = "xxxxxxxx"
+  passphrase = "test1"
 
   sh "security create-keychain -p travis #{KEYCHAIN_NAME}"
-  sh "security import ./certificates/apple.cer -k #{KEYCHAIN_NAME} -T /usr/bin/codesign"
-  sh "security import ./certificates/appstore.cer -k #{KEYCHAIN_NAME} -T /usr/bin/codesign"
-  sh "security import ./certificates/appstore.p12 -k #{KEYCHAIN_NAME} -P #{passphrase} -T /usr/bin/codesign"
-  sh "security import ./certificates/inhouse.cer -k #{KEYCHAIN_NAME} -T /usr/bin/codesign"
-  sh "security import ./certificates/inhouse.p12 -k #{KEYCHAIN_NAME} -P #{passphrase} -T /usr/bin/codesign"
+  sh "security import ./certificates/AppleWWDRCA.cer -k #{KEYCHAIN_NAME} -T /usr/bin/codesign"
+  #sh "security import ./certificates/appstore.cer -k #{KEYCHAIN_NAME} -T /usr/bin/codesign"
+  #sh "security import ./certificates/appstore.p12 -k #{KEYCHAIN_NAME} -P #{passphrase} -T /usr/bin/codesign"
+  #sh "security import ./certificates/inhouse.cer -k #{KEYCHAIN_NAME} -T /usr/bin/codesign"
+  #sh "security import ./certificates/inhouse.p12 -k #{KEYCHAIN_NAME} -P #{passphrase} -T /usr/bin/codesign"
+  sh "security import ./certificates/dist.cer -k #{KEYCHAIN_NAME} -T /usr/bin/codesign"
+  sh "security import ./certificates/dist.p12 -k #{KEYCHAIN_NAME} -P #{passphrase} -T /usr/bin/codesign"
   sh "security default-keychain -s #{KEYCHAIN_NAME}"
 end
 
