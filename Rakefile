@@ -88,7 +88,7 @@ namespace :test do
 end
 
 def test(configuration: "Release")
-  options = build_options(sdk: "iphonesimulator8.1", configuration: configuration)
+  options = build_options(sdk: "iphonesimulator8.1", configuration: configuration, arch: "i386")
   # options << DESTINATIONS.map { |destination| %[-destination "#{destination}"] }.join(" ")
   sh %[xcodebuild #{options} GCC_SYMBOLS_PRIVATE_EXTERN="NO" test | xcpretty -c; exit ${PIPESTATUS[0]}]
 end
@@ -284,7 +284,8 @@ def deploygate
     token: token,
     message: release_notes
   }
-  upload_form("https://deploygate.com/api/users/#{ENV['DEPLOYGATE_USER']}/apps")
+  #upload_form("https://deploygate.com/api/users/#{ENV['DEPLOYGATE_USER']}/apps")
+  sh %Q(curl -F "file=#{options['file']}" -F "token=#{options['token']}" -F "message=#{options['message']}" https://deploygate.com/api/users/#{ENV['DEPLOYGATE_USER']}/apps)
 end
 
 def upload_form(url, options = {})
