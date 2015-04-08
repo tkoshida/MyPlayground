@@ -88,7 +88,7 @@ namespace :test do
 end
 
 def test(configuration: "Release")
-  options = build_options(sdk: "iphonesimulator", configuration: configuration)
+  options = build_options(sdk: "iphonesimulator8.1", configuration: configuration)
   # options << DESTINATIONS.map { |destination| %[-destination "#{destination}"] }.join(" ")
   sh %[xcodebuild #{options} GCC_SYMBOLS_PRIVATE_EXTERN="NO" test | xcpretty -c; exit ${PIPESTATUS[0]}]
 end

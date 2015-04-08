@@ -1,5 +1,5 @@
 language: objective-c
-xcode_sdk: iphonesimulator
+xcode_sdk: iphonesimulator8.1
 branches:
   only:
     - master
