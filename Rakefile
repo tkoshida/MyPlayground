@@ -207,6 +207,7 @@ end
 def distribute
   #crittercism
   #testflight
+  deploygate
 end
 
 def crittercism
@@ -251,6 +252,39 @@ def testflight
     notes: release_notes,
   }
   upload_form("http://testflightapp.com/api/builds.json", options)
+end
+
+def deploygate
+  pr_number = ENV["TRAVIS_PULL_REQUEST"]
+  branch_name = ENV["TRAVIS_BRANCH"]
+
+  release_date = DateTime.now.strftime("%Y/%m/%d %H:%M:%S")
+  build_version = InfoPlist.marketing_and_build_version
+  repo_url = "https://github.com/tkoshida/MyPlayground"
+
+  release_notes = "Build: #{build_version}\nUploaded: #{release_date}\n"
+
+  if pull_request?
+    release_notes << "Branch: #{repo_url}/commits/#{branch_name}\n"
+    release_notes << "Pull Request: #{repo_url}/pull/#{pr_number}\n"
+    release_notes << %x[git log --date=short --pretty=format:"* %h - %s (%cd) <%an>" --no-merges #{branch_name}..]
+  else
+    commit_hash = %x[git rev-parse HEAD].strip
+    release_notes << "Branch: #{repo_url}/commits/#{branch_name}\n"
+    if branch_name == "master"
+      release_notes << %x[git log --date=short --pretty=format:"* %h - %s (%cd) <%an>" --no-merges $(git describe --abbrev=0 --tags)..]
+    else
+      release_notes << %x[git log --date=short --pretty=format:"* %h - %s (%cd) <%an>" --no-merges]
+    end
+  end
+
+  token = ENV["DEPLOYGATE_TOKEN"]
+  options = {
+    file: "@#{IPA_FILE}",
+    token: token,
+    message: release_notes
+  }
+  upload_form("https://deploygate.com/api/users/#{ENV['DEPLOYGATE_USER']}/apps")
 end
 
 def upload_form(url, options = {})
