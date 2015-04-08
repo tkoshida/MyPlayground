@@ -366,6 +366,7 @@
 					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = MyPlayground/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -380,6 +381,7 @@
 					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = MyPlayground/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -464,6 +466,7 @@
 					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = MyPlayground/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "69a1c2db-b444-4869-804e-189199649c2b";
