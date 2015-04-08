@@ -13,6 +13,8 @@
 		C3F898B51AD266FC008429DD /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C3F898B41AD266FC008429DD /* Images.xcassets */; };
 		C3F898B81AD266FC008429DD /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = C3F898B61AD266FC008429DD /* LaunchScreen.xib */; };
 		C3F898C41AD266FC008429DD /* MyPlaygroundTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3F898C31AD266FC008429DD /* MyPlaygroundTests.swift */; };
+		C3F898D31AD516A6008429DD /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3F898D11AD516A6008429DD /* Crashlytics.framework */; };
+		C3F898D41AD516A6008429DD /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3F898D21AD516A6008429DD /* Fabric.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +38,8 @@
 		C3F898BD1AD266FC008429DD /* MyPlaygroundTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MyPlaygroundTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C3F898C21AD266FC008429DD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C3F898C31AD266FC008429DD /* MyPlaygroundTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPlaygroundTests.swift; sourceTree = "<group>"; };
+		C3F898D11AD516A6008429DD /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = SOURCE_ROOT; };
+		C3F898D21AD516A6008429DD /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -43,6 +47,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C3F898D31AD516A6008429DD /* Crashlytics.framework in Frameworks */,
+				C3F898D41AD516A6008429DD /* Fabric.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -82,6 +88,8 @@
 				C3F898B11AD266FC008429DD /* Main.storyboard */,
 				C3F898B41AD266FC008429DD /* Images.xcassets */,
 				C3F898B61AD266FC008429DD /* LaunchScreen.xib */,
+				C3F898D11AD516A6008429DD /* Crashlytics.framework */,
+				C3F898D21AD516A6008429DD /* Fabric.framework */,
 				C3F898AB1AD266FC008429DD /* Supporting Files */,
 			);
 			path = MyPlayground;
@@ -122,6 +130,7 @@
 				C3F898A41AD266FC008429DD /* Sources */,
 				C3F898A51AD266FC008429DD /* Frameworks */,
 				C3F898A61AD266FC008429DD /* Resources */,
+				C3F898D01AD5166C008429DD /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -206,6 +215,22 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		C3F898D01AD5166C008429DD /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "./Fabric.framework/run a1fd46856328894a8c65cc83637b8ea28938ed04 e2a0eb423ada3911b4eaa02a0ae857ca08eac7961b978ece5dfd349fe0e05a35";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		C3F898A41AD266FC008429DD /* Sources */ = {
@@ -336,6 +361,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = MyPlayground/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -346,6 +375,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = MyPlayground/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -426,6 +459,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Distribution: TAKAYOSHI KOSHIDA (C59MXB37VX)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = MyPlayground/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
