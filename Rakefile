@@ -208,6 +208,7 @@ end
 def distribute
   #crittercism
   #testflight
+  crashlytics
   deploygate
 end
 
@@ -217,6 +218,10 @@ def crittercism
     key: API_KEY,
   }
   upload_form("https://api.crittercism.com/api_beta/dsym/#{APP_ID}", options)
+end
+
+def crashlytics
+  sh %[./Fabric.framework/run a1fd46856328894a8c65cc83637b8ea28938ed04 e2a0eb423ada3911b4eaa02a0ae857ca08eac7961b978ece5dfd349fe0e05a35]
 end
 
 def testflight

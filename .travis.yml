@@ -17,7 +17,7 @@ script:
   - '[ ! -z $(echo ${TRAVIS_BRANCH} | grep "^release.*$") ] && CONFIG=release || CONFIG=adhoc'
   - echo ${TRAVIS_BRANCH}
   - echo ${CONFIG}
-  - bundle exec rake $(echo ${ACTION} | sed -e "s/CONFIG/${CONFIG}/g")
+  - bundle exec rake --trace $(echo ${ACTION} | sed -e "s/CONFIG/${CONFIG}/g")
 env:
   global:
     - LANG=en_US.UTF-8
