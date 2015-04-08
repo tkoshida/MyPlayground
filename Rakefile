@@ -222,7 +222,7 @@ def crittercism
 end
 
 def crashlytics
-  #sh %[./Fabric.framework/run a1fd46856328894a8c65cc83637b8ea28938ed04 e2a0eb423ada3911b4eaa02a0ae857ca08eac7961b978ece5dfd349fe0e05a35]
+  sh %[./Crashlytics.framework/submit a1fd46856328894a8c65cc83637b8ea28938ed04 e2a0eb423ada3911b4eaa02a0ae857ca08eac7961b978ece5dfd349fe0e05a35 -ipaPath "#{IPA_FILE}" -emails tyskos@gmail.com]
 end
 
 def testflight
