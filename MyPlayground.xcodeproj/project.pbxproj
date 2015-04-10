@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		C36BB6A21AD67B1600D3EA9C /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C36BB6A11AD67B1600D3EA9C /* LoginViewController.swift */; };
+		C36BB6A41AD7DBA000D3EA9C /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = C36BB6A31AD7DBA000D3EA9C /* Utils.swift */; };
 		C3F898AE1AD266FC008429DD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3F898AD1AD266FC008429DD /* AppDelegate.swift */; };
 		C3F898B01AD266FC008429DD /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3F898AF1AD266FC008429DD /* ViewController.swift */; };
 		C3F898B31AD266FC008429DD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C3F898B11AD266FC008429DD /* Main.storyboard */; };
@@ -43,6 +44,7 @@
 
 /* Begin PBXFileReference section */
 		C36BB6A11AD67B1600D3EA9C /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		C36BB6A31AD7DBA000D3EA9C /* Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		C3F898A81AD266FC008429DD /* MyPlayground.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyPlayground.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C3F898AC1AD266FC008429DD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C3F898AD1AD266FC008429DD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -128,6 +130,7 @@
 				C3F898AD1AD266FC008429DD /* AppDelegate.swift */,
 				C3F898AF1AD266FC008429DD /* ViewController.swift */,
 				C36BB6A11AD67B1600D3EA9C /* LoginViewController.swift */,
+				C36BB6A31AD7DBA000D3EA9C /* Utils.swift */,
 				C3F898B11AD266FC008429DD /* Main.storyboard */,
 				C3F898B41AD266FC008429DD /* Images.xcassets */,
 				C3F898B61AD266FC008429DD /* LaunchScreen.xib */,
@@ -303,6 +306,7 @@
 				C36BB6A21AD67B1600D3EA9C /* LoginViewController.swift in Sources */,
 				C3F898B01AD266FC008429DD /* ViewController.swift in Sources */,
 				C3F898AE1AD266FC008429DD /* AppDelegate.swift in Sources */,
+				C36BB6A41AD7DBA000D3EA9C /* Utils.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

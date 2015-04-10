@@ -7,6 +7,7 @@
 //
 
 import UIKit
+//import Utils
 
 class ViewController: UIViewController {
 
@@ -16,6 +17,8 @@ class ViewController: UIViewController {
     }
     
     override func viewDidAppear(animated: Bool) {
+        
+        
         let storyboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
         let loginViewController: LoginViewController = storyboard.instantiateViewControllerWithIdentifier("LoginViewController") as! LoginViewController
         self.presentViewController(loginViewController, animated: true) { () -> Void in

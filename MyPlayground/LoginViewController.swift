@@ -31,6 +31,23 @@ class LoginViewController: UIViewController, UIWebViewDelegate {
     
     func webView(webView: UIWebView, shouldStartLoadWithRequest request: NSURLRequest, navigationType: UIWebViewNavigationType) -> Bool {
         
+        if let urlString: String = request.URL?.absoluteString {
+            
+            let regexOptions:NSRegularExpressionOptions? = NSRegularExpressionOptions.CaseInsensitive
+            
+            var matchingError : NSError?
+            let regex = NSRegularExpression(pattern: "https://crowdworks.jp/auth/.*?/callback", options: regexOptions!, error: &matchingError)
+            
+            let results = regex!.matchesInString(urlString, options: nil, range: NSMakeRange(0, count(urlString))) as! Array<NSTextCheckingResult>
+
+            if results.count > 0 {
+                self.dismissViewControllerAnimated(true, completion: { () -> Void in
+                    
+                })
+                return false
+            }
+        }
+        
         return true
     }
     
